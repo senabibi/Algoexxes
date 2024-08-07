@@ -1,6 +1,8 @@
 class Solver:
     def __init__(self, s):
+        
         self.s = s
+        
 
     def ask(self, a, b, l):
         return self.s[a:a+l] == self.s[b:b+l]
