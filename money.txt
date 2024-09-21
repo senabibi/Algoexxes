@@ -1,0 +1,22 @@
+def min_coins(target_amount):
+    # Available coin denominations
+    coin_values = [1, 3, 4]
+    
+    # Initialize a list to store the minimum coins needed for each amount up to target_amount
+    min_coins_needed = [0] + [float('inf')] * target_amount
+    
+    # Loop through each amount from 1 to target_amount
+    for amount in range(1, target_amount + 1):
+        # Check each coin denomination
+        for coin in coin_values:
+            # If the coin can be used (i.e., it's not larger than the current amount)
+            if amount >= coin:
+                # Update min_coins_needed for this amount
+                min_coins_needed[amount] = min(min_coins_needed[amount], min_coins_needed[amount - coin] + 1)
+
+    # Return the minimum coins needed to make the target_amount
+    return min_coins_needed[target_amount]
+
+# Take input from user and calculate minimum coins
+target_amount = int(input("Enter the amount of money: "))
+print("Minimum coins needed:", min_coins(target_amount))
